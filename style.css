@@ -32,10 +32,11 @@ a{
 	width: 100vw;
 	background-image: url("./images/bg.png");
 	background-attachment: fixed;
-	background-position: top center;
+	background-position:top center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	transition: all 0.3 ease;
+	overflow: hidden;
 }
 .blur-layer::before{
 	content: "";
@@ -318,7 +319,7 @@ a{
 .foodIntro .intro{
 	background: #f8f9fa;
 	text-align: center;
-	padding: 90px;
+	padding: 90px 0;
 	padding-top: 160px;
 }
 .foodIntro .intro h3{
@@ -340,12 +341,11 @@ a{
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	width: 1230px;
+	width: 800px;
 	padding-bottom: 200px;
 }
 
 .foodIntro .foodIntro-box .box-row{
-	width: 90%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -355,6 +355,7 @@ a{
 .img-intro, .text-intro{
 	width: 330px;
 	height: 330px;
+	display: inline-block;
 }
 .img-intro img{
 	width: 100%;
@@ -715,15 +716,10 @@ a{
 
 .reviews{
 	background-color: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 80px 0;
+	text-align: center;
 	width: 100vw;
 	position: relative;
-	left: 0;
-	padding-bottom: 400px;
+	padding-bottom: 100px;
 }
 
 .reviews .title{
@@ -738,10 +734,22 @@ a{
 }
 
 
-.reviews  .container{
+.reviews .layer{
+	position: relative;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 680px;
+	min-height: 360px;
+	overflow-x: hidden;
+
+}
+
+.reviews .layer .container{
 	position: absolute;
+	top: 0;
+	left: 0;
 	z-index: 10;
-	top: 250px;
 	flex-wrap: nowrap;
 	height: 300px;
 	display: flex;
@@ -750,25 +758,10 @@ a{
 	transition: all 0.5s ease;
 }
 
-
-.reviews  .layer{
-	z-index: 11;
-	background-color: transparent;
-	position: absolute;
-	box-sizing: unset;
-	top: 240px;
-	left: -5vw;
-	width: 66vw;
+.reviews .layer .container .box{
+	width: 680px;
 	height: 300px;
-	border-left: 22vw solid white;
-	border-right: 22vw solid white;
-}
-
-
-
-.reviews  .container .box{
-	width: 66vw;
-	height: 300px;
+	padding: 0 10px;
 }
 
 
@@ -804,13 +797,16 @@ a{
 }
 
 .switch{
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 150px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	flex-direction: row;
-	position: absolute;
-	bottom: 50px;
-	width: 150px;
+
 }
 
 .switch input[type=radio]{
@@ -1028,11 +1024,6 @@ footer .col .btn{
 }
 
 
-
-
-
-
-
 @media screen and (max-width: 1010px){
 	.meal-items .meal-item{
 		width: 600px;
@@ -1132,5 +1123,119 @@ footer .col .btn{
 	}
 	footer .col .row .input input{
 		width: 60vw;
+	}
+}
+
+@media screen and (max-width: 450px){
+	.header .toggle-btn{
+		right: 40px;
+	}
+	.welcome{
+		height: 60vh;
+		overflow: hidden;
+	}
+
+	.foodIntro .intro{
+		padding: 100px 0 20px 0;
+	}
+	.foodIntro .intro h2{
+		font-size: 25px;
+	}	
+	.foodIntro .intro p{
+		font-size: 16px;
+	}
+
+	.foodIntro .foodIntro-box{
+		width: 100vw;
+		padding: 20px 0 40px 0;
+	}
+	.foodIntro .foodIntro-box .box-row{
+		width: 100%;
+	}
+	.text-intro{
+		width: 100%;
+	}
+	.about-us{
+		padding: 20px 0;
+	}
+	.about-us .body-content p{
+		font-size: 13px;
+	}
+	.meet-the-chefs .title h1{
+		font-size: 40px;
+	}
+	.meet-the-chefs .box-horizon .profile >img {
+		width: 150px;
+		margin: 0;
+	}
+
+	.meet-the-chefs .box-horizon .profile .desc p{
+		font-size: 13px;
+	}
+
+	.meal-menu .menu-title h2{
+		font-size: 40px;
+	}
+	.meal-menu .menu-title p{
+		font-size: 16px;
+	}
+	.meal-menu .nav-meal .meal{
+		margin: 0 10px;
+	}
+	.meal-menu .nav-meal{
+
+	}
+	.meal-items {
+		padding-bottom: 0;
+	}
+	.meal-items .meal-item .item-content{
+		width: 50%;
+		padding: unset;
+	}
+	.our-services{
+		padding: 10px 0;
+	}
+	.our-services .our-services-introduction{
+		padding: 20px 0 10px 0;
+	}	
+	.our-services .our-services-introduction h2{
+		font-size: 40px;
+	}
+	.our-services .our-services-introduction p{
+		font-size: 16px;
+	}
+	.reservation .form{
+		padding: 20px 10px 60px 10px;
+	}
+	.reviews .title h2{
+		font-size: 40px;
+	}
+	.reviews .container .box{
+		left: 0;
+		display: flex;
+		padding: 0 10px;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.reviews .container .box blockquote{
+		padding: 60px 10px 10px 10px;
+		width: 100vw;
+		overflow: hidden;
+	}
+	.reviews .container .box blockquote p{
+		font-size: 12px;
+	}
+	.layer{
+		width: 100vw;
+	}
+	.menu{
+		display: none;
+	}
+	.menuActive .menu{
+		position: fixed;
+		top:0;
+		right: 30vw;
+		height: 100vh;
 	}
 }

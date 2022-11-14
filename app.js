@@ -37,31 +37,30 @@ const reviews = [
 		figure: "p1.png",
 		name: "Peter Green",
 		title: "CEO, Founder",
-		saying: "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar."
-	},
-	{
+		saying: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	},{
 		figure: "p2.png",
 		name: "Dennis Roman",
 		title: "CEO, Founder",
-		saying: "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar."		
+		saying: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."		
 	},
 	{
 		figure: "p3.png",
 		name: "Maxim Smith",
 		title: "CEO, Founder",
-		saying: "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar."		
+		saying: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."		
 	},
 	{
 		figure: "p5.png",
 		name: "Ironman",
 		title: "Special person",
-		saying: "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar."		
+		saying: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."		
 	},
 	{
 		figure: "p4.png",
 		name: "Peter Parker",
 		title: "Spider man",
-		saying: "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar."		
+		saying: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."		
 	}
 ]
 
@@ -222,10 +221,18 @@ const menu= ()=>{
 		header.classList.toggle("menuActive")
 		item.forEach((link,i) =>{
 			if(link.style.animation === ""){
+				item
 				link.style.animation = `fadeLink 1s forwards ${i/8}s`
-			}else {
+			} else {
 				link.style.animation =""
 			}
+
+			link.addEventListener("click", ()=>{
+				header.classList.remove("menuActive")
+				item.forEach(i=>{
+					i.style.animation =""
+				})
+			})
 		})
 	})
 }
@@ -243,6 +250,7 @@ const learnMoreBtn = ()=>{
 	})
 }
 
+
 const scrollLayer = () => {
 	const layer = document.querySelector(".white-layer")
 	const logo = document.querySelector(".logo")
@@ -252,20 +260,25 @@ const scrollLayer = () => {
 
 	window.addEventListener('scroll', () =>{
 		const y = window.pageYOffset
+		const x = window.pageXOffset
+		if(x>800){
+			if(y<800) blurLayer.style.transform = `scale(${1+(y/1000)})`
+			else blurLayer.style.transform = `scale(1.8)`
 
-		if(y<800) blurLayer.style.transform = `scale(${1+(y/1000)})`
-		else blurLayer.style.transform = `scale(1.8)`
+			if(y > lastScrollY && y >350 ){
+				layer.style.animation = "layerDown 0.5s forwards"
+			} 
+			else if(y < lastScrollY && y <= 350 ) {
+				layer.style.transition ="all 0.5s ease-out"
+				layer.style.animation = "layerUp 1s forwards"			
+			} else{
 
-		if(y > lastScrollY && y >350 ){
-			layer.style.animation = "layerDown 0.5s forwards"
-		} 
-		else if(y < lastScrollY && y <= 350 ) {
-			layer.style.transition ="all 0.5s ease-out"
-			layer.style.animation = "layerUp 1s forwards"			
+			}
+
+			lastScrollY = y
+			logo.classList.toggle('black-logo', y>350)
+			
 		}
-
-		lastScrollY = y
-		logo.classList.toggle('black-logo', y>350)
 	}
 
 	)
@@ -365,7 +378,6 @@ function renderSlide(){
 
 	const container = document.querySelector(".container")
 	
-	container.style.left = 17+'vw'
 	reviews.forEach(review =>{
 		const box = document.createElement("div")
 		const blockquote = document.createElement("blockquote")
@@ -395,7 +407,7 @@ function renderSlide(){
 }
 
 function handleClickBtn(box, index){
-	box.style.left = 17 - 66*index +'vw'
+	box.style.left = - 680*index +'px'
 	const target = document.querySelector(`#radio-${index}`)
 	target.checked = true
 }
@@ -432,11 +444,11 @@ const renderSwitchBtn = () => {
 		label.setAttribute('for', `radio-${i}`)
 
 
-	label.addEventListener('click',()=>{
-		handleClickBtn(box,i)
-		stop()
-		start(i)
-	})
+		label.addEventListener('click',()=>{
+			handleClickBtn(box,i)
+			stop()
+			start(i)
+		})
 
 		container.appendChild(input)
 		container.appendChild(label)
