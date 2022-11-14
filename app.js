@@ -195,7 +195,7 @@ const render=(list)=>{
 		h4.textContent = item.name
 		p.textContent = item.desc
 		h5.textContent = `$  ${item.price}`
-		img.setAttribute('src',`../images/${item.src}`)
+		img.setAttribute('src',`./images/${item.src}`)
 		container.setAttribute('class',"meal-item")
 		content.setAttribute('class', 'item-content')
 		price.setAttribute('class', 'price')
@@ -282,7 +282,7 @@ function renderServices(){
 		const p = document.createElement('p')
 
 
-		img.setAttribute('src', `../images/services/${service.src}`)
+		img.setAttribute('src', `./images/services/${service.src}`)
 		div.setAttribute('class', "service-description")
 		h2.textContent = service.title
 		p.textContent = service.desc
@@ -377,7 +377,7 @@ function renderSlide(){
 
 		box.setAttribute('class', 'box')
 		div.setAttribute('class', 'image')
-		img.setAttribute('src', `../images/author/${review.figure}`)
+		img.setAttribute('src', `./images/author/${review.figure}`)
 		p1.textContent = '"'+review.saying + '"'
 		h2.textContent = review.name
 		p2.textContent = review.title
