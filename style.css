@@ -1,0 +1,1136 @@
+:root{
+	--orange: #FF7F50;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	box-sizing: border-box;
+}
+
+
+body::-webkit-scrollbar{
+		display: none;
+}
+body{
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.blur-layer{
+	position: fixed;
+	top: 0;
+	z-index: -99;
+	height: 100vh;
+	width: 100vw;
+	background-image: url("../images/bg.png");
+	background-attachment: fixed;
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition: all 0.3 ease;
+}
+.blur-layer::before{
+	content: "";
+	background-color: rgba(0,0,0,0.2);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.header{
+	position: relative;
+	top: 0;
+	min-height: 140px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+}
+
+.header .logo {
+	height: 55px;
+	width: 55px;
+	z-index: 99;
+	background: transparent;
+	border: 3px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.header .logo h1{
+	font-size: 20px;
+}
+
+.header .toggle-btn{
+	position: absolute;
+	z-index: 99;
+	right: 50px;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.header .toggle-btn .bar{
+	display: block;
+	height: 2px;
+	width: 35px;
+	position: relative;
+	background-color: black;
+	transition: all 0.4s ease;
+}
+
+.header .toggle-btn .bar::before{
+	transition: all 0.4s ease;
+	display: block;
+	height: 100%;
+	width: 100%;
+	background-color: black;	
+	content: "";
+	position: absolute;
+	top: -8px;
+}
+.header .toggle-btn .bar::after{
+	transition: all 0.4s ease;
+	display: block;
+	height: 100%;
+	width: 100%;
+	background-color: black;	
+	content: "";
+	position: absolute;
+	top: 8px;
+}
+
+.welcome{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+
+.welcome .content{
+	width: 50vw;
+	min-height: 180px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding-bottom: 120px;
+}
+.welcome .content h1{
+	padding-bottom: 30px;
+	font-weight: 100;
+	text-align: center;
+	font-size: 50px;
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+
+.welcome .content .welcome-btn{
+	padding: 18px 80px;
+	border: 2px solid white;
+	cursor: pointer;
+	border-radius: 3px;
+	background-color: transparent;
+	transition: all 0.3s ease;
+}
+
+.welcome .content .welcome-btn:hover{
+	background-color: rgba(255,255,255,0.8);
+}
+.welcome .content .welcome-btn:hover p {
+	color: black;
+	font-weight: 900;
+}
+
+.welcome .content .welcome-btn p {
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 3px;
+	font-weight: 100;
+}
+
+.menu{
+	background-color: #f8f9fa;
+	position: fixed;
+	right: -40vw;
+	width: 30vw;
+	background-color: white;
+	height: 100vh;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: all 0.3s ease;
+	z-index: 80;
+}
+
+.items{
+	height: 80vh;
+	width: 250px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.items .item{
+	padding: 20px;
+	opacity: 0;
+}
+.items .item a{
+	color: black;
+	font-family: 'Roboto', sans-serif;
+	font-size: 19px;
+	text-transform: capitalize;
+	font-weight: 600;
+	opacity: 0.5;
+}
+
+.items .item a:hover {
+	transition: all 0.4s ease;
+	opacity: 1;
+}
+.menuActive .menu{
+	right: 0;
+	opacity: 1;
+}
+.menuActive .toggle-btn .bar{
+	background-color: transparent;
+}
+.menuActive .toggle-btn .bar::before{
+	transform: rotate(-45deg) translate(-11px);
+}
+.menuActive .toggle-btn .bar::after{
+	transform: rotate(45deg) translate(-11px);
+}
+
+.header .toggle-btn:hover .bar::before{
+	top: -10px;
+}
+.header .toggle-btn:hover .bar::after{
+	top: 10px;
+}
+.menuActive .toggle-btn:hover .bar::before{
+	top: -8px;
+}
+.menuActive .toggle-btn:hover .bar::after{
+	top: 8px;
+}
+
+@keyframes fadeLink{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+
+.header .black-logo{
+	background: black;
+}
+
+.black-logo h1{
+	color: white;
+}
+
+.white-layer{
+	position: relative;
+	background-color: transparent;
+	top: 0;
+	z-index: 90;
+	height: 140px;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.5s ease;
+	opacity: 1;
+}
+
+
+@keyframes layerDown{
+	0% {
+		position: relative;
+		background-color: transparent;
+		top:  -200px;
+		opacity: 1;
+	}
+	50%{
+		background-color: transparent;
+		position: fixed;
+		top: -200px;
+		opacity: 0;
+	}
+	100%{
+		position: fixed;
+		background-color: white;
+		top: 0;
+		opacity: 1;
+	}
+}
+
+@keyframes layerUp{
+	0%{
+		position: fixed;
+		background-color: white;
+		top: 0;
+		opacity: 1;
+	}
+	70%{
+		background-color: transparent;
+		position: fixed;
+		opacity: 0;
+		top: -200px;
+
+	}
+	100% {
+		position: relative;
+		background-color: transparent;
+		top:  0px;
+		opacity: 1;
+	}
+}
+
+
+
+.foodIntro{
+	display: flex;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background: #f8f9fa;
+}
+
+.foodIntro .intro{
+	background: #f8f9fa;
+	text-align: center;
+	padding: 90px;
+	padding-top: 160px;
+}
+.foodIntro .intro h3{
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-size: 55px;
+	letter-spacing: 2px;
+	padding: 20px;
+	font-weight: lighter;
+}
+
+.foodIntro .intro p{
+	font-size: 20px;
+	color: #696969;
+}
+
+.foodIntro .foodIntro-box{
+	background: #f8f9fa;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 1230px;
+	padding-bottom: 200px;
+}
+
+.foodIntro .foodIntro-box .box-row{
+	width: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.img-intro, .text-intro{
+	width: 330px;
+	height: 330px;
+}
+.img-intro img{
+	width: 100%;
+}
+
+.text-intro{
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
+.text-intro .top-content{
+	padding: 15px;
+}
+.text-intro .top-content h2,.text-intro .top-content h3 {
+	font-weight: 100;
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 5px;
+}
+
+.text-intro .top-content h2{
+	font-size: 20px;
+	color: #ff7a5c;
+}
+.text-intro .top-content h3{
+	font-size: 22px;
+	letter-spacing: 2px;
+}
+
+.text-intro .body-content{
+	padding: 0 50px;
+	text-align: center;
+}
+
+.text-intro .body-content p{
+	font-size: 18px;
+	color: #696970;
+}
+
+.learn-more{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 30px 0;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+.learn-more i{
+	padding-left: 5px;
+}
+
+.learn-more i, .learn-more p {
+	transition: all 0.4s ease;
+}
+
+.learn-more:hover i {
+	padding-left: 15px;
+}
+.learn-more:hover p {
+	letter-spacing: 2px;
+}
+
+
+.about-us{
+	width: 100vw;
+	padding: 60px 0;
+	background-color: white;
+}
+.about-us .top-content, .about-us .body-content{
+	padding: 0 10vw;
+}
+
+.about-us .top-content h2{
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-weight: 100;
+	font-size: 65px;
+	padding: 40px;
+}
+
+.about-us .body-content p{
+	padding: 15px 0;
+	font-size: 20px;
+	color: #696970;
+}
+
+.about-us .body-content{
+	padding-bottom: 40px;
+}
+
+.about-us .bottom-content{
+	width: 100%;
+}
+.about-us .bottom-content img{
+	width: 100%;
+}
+
+.meet-the-chefs{
+	background-color: white;
+	padding: 50px 7vw;
+	text-align: center;
+}
+
+.meet-the-chefs .title{
+	padding: 40px 0;
+}
+
+.meet-the-chefs .title h1{
+	font-size: 55px;
+	letter-spacing: 2px;
+	font-weight: 100;
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+.meet-the-chefs .box-horizon{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+
+}
+
+.meet-the-chefs .box-horizon .profile{
+	padding: 0 3vw;
+	text-align: center;
+}
+
+.meet-the-chefs .box-horizon .profile >img{
+	width: 250px;
+	border-radius: 50%;
+	margin-top: 40px;
+}
+
+.meet-the-chefs .box-horizon .profile .name-box{
+	padding: 20px 0;
+}
+
+.meet-the-chefs .box-horizon .profile .name-box h3{
+	font-size: 33px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight: 100;
+}
+.meet-the-chefs .box-horizon .profile .name-box h6{
+	font-size: 15px;
+	letter-spacing: 2px;
+	font-weight: 100;
+	color: #696970;
+}
+
+.meet-the-chefs .box-horizon .profile .desc{
+	text-align: left;
+}
+.meet-the-chefs .box-horizon .profile .desc p{
+	color: #696970;
+	font-size: 18px;
+	padding: 10px 0;
+}
+
+.meet-the-chefs .box-horizon .profile .links{
+	padding: 20px 0;
+}
+
+.meet-the-chefs .box-horizon .profile .links a{
+	margin: 0 10px;
+	font-size: 22px;
+	color: orangered;
+	opacity: 0.6;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.meet-the-chefs .box-horizon .profile .links a:hover{
+	opacity: 1;
+}
+
+
+
+.meal-menu{
+	background-color: whitesmoke;
+	padding: 100px 10vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;	
+}
+
+.meal-menu .menu-title{
+	text-align: center;
+}
+.meal-menu .menu-title h2{
+	font-size: 60px;
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-weight: 100;
+	letter-spacing: 2px;
+}
+.meal-menu .menu-title p{
+	font-size: 22px;
+	padding: 15px 0;
+	letter-spacing: 2px;
+	color: #696969;
+	opacity: 0.8;
+	padding-bottom: 50px;
+}
+
+.meal-menu .nav-meal{
+	margin: 30px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.meal-menu  .nav-meal .meal{
+	width: 140px;
+	height: 60px;
+	margin: 0 30px;
+	text-align: center;
+}
+
+.meal-menu  .nav-meal .meal h4{
+	cursor: pointer;
+	color: darkslategrey;
+	line-height: 60px;
+	text-transform: uppercase;
+	font-size: 18px;
+	letter-spacing: 3px;
+	font-weight: 900;
+	border-bottom: 2px solid darkslategrey;
+	transition: all 0.2s ease;
+	opacity: 0.3;
+
+}
+
+.meal-menu  .nav-meal .meal-active h4{
+	color: var(--orange);
+	border-color: var(--orange);
+	opacity: 1;
+}
+
+
+
+
+
+.meal-items{
+	display: flex;
+	justify-self: space-between;
+	align-items: center;
+	flex-direction: column;
+	width: 100vw;
+	padding-bottom: 80px;
+}
+
+.meal-items .meal-item{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	padding: 30px 0;
+	border-bottom: 1px dotted #696969;
+	width: 750px;
+}
+
+.meal-items .meal-item img{
+	width: 90px;
+	border-radius: 8px;
+	margin: 0 20px;
+}
+
+.meal-items .meal-item .item-content{
+	width: 450px;
+	word-wrap: break-word;
+	padding: 0 30px;
+}
+
+.meal-items .meal-item .item-content h4{
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-size: 22px;
+	font-weight: 100;
+	padding: 10px 0;
+	letter-spacing: 1px;
+	text-transform: capitalize;
+}
+.meal-items .meal-item .item-content p{
+	font-weight: 100;
+	color: #696969;
+	font-size: 13px;
+}
+
+
+.our-services{
+	padding: 90px 0;
+	width: 100vw;
+	background-color: white;
+}
+.our-services .our-services-introduction{
+	width: 100vw;
+	padding: 80px 0;
+	text-align: center;
+}
+
+.our-services .our-services-introduction h2{
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-size: 58px;
+	letter-spacing: 2px;
+	font-weight: 100;
+	line-height: 100px;
+}
+.our-services .our-services-introduction p{
+	font-weight: 100;
+	color: #696969;
+	letter-spacing: 2px;
+	font-size: 20px;
+}
+
+
+.our-services{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.our-services .services-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 90%;
+	padding: 20px 0;
+	flex-wrap: wrap;
+}
+
+.our-services .services-container  .service{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px 0;
+}
+.our-services .services-container  .service img{
+	width: 100px;
+	margin: 30px 0;
+}
+
+.our-services .services-container  .service .service-description{
+	text-align: center;
+}
+.our-services .services-container  .service .service-description h2{
+	padding: 20px 0;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+
+
+.reviews{
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 80px 0;
+	width: 100vw;
+	position: relative;
+	left: 0;
+	padding-bottom: 400px;
+}
+
+.reviews .title{
+	padding: 60px 0;
+}
+
+.reviews .title h2{
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-size: 55px;
+	font-weight: 100 ;
+	letter-spacing: 2px;
+}
+
+
+.reviews  .container{
+	position: absolute;
+	z-index: 10;
+	top: 250px;
+	flex-wrap: nowrap;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.5s ease;
+}
+
+
+.reviews  .layer{
+	z-index: 11;
+	background-color: transparent;
+	position: absolute;
+	box-sizing: unset;
+	top: 240px;
+	left: -5vw;
+	width: 66vw;
+	height: 300px;
+	border-left: 22vw solid white;
+	border-right: 22vw solid white;
+}
+
+
+
+.reviews  .container .box{
+	width: 66vw;
+	height: 300px;
+}
+
+
+.reviews  .container .box blockquote {
+	padding: 20px 0;
+}
+
+.reviews  .container .box blockquote p{
+	font-size: 18px;
+	word-spacing: 2px;
+	color: #696990;
+	letter-spacing: 1px;
+	text-align: center;
+}
+
+.reviews  .container .box .image {
+	text-align: center;
+}
+
+.reviews  .container .box .image img{
+	width: 100px;
+	margin: 5px 0;
+	border-radius: 50%;
+
+}
+.reviews  .container .box .image p{
+	font-size: 14px;
+	font-weight: 100;
+}
+
+.reviews  .container .box .image h2{
+	font-size: 18px;
+}
+
+.switch{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+	position: absolute;
+	bottom: 50px;
+	width: 150px;
+}
+
+.switch input[type=radio]{
+	display: none;	
+	transition: all 0.3s ease;
+}
+
+.switch input[type=radio]:checked +label{
+	background-color: var(--orange);
+	padding: 8px;
+}
+
+.switch .mask-radio{
+	cursor: pointer;
+	display: block;
+	padding: 4px;
+	border-radius: 50%;
+	background-color: var(--orange);
+	transition: all 0.3s ease;
+}
+
+.reservation{
+	background-color: whitesmoke;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-self: center;
+	padding: 80px 0;
+}
+
+.reservation .title{
+	text-align: center;
+}
+
+.reservation .title h2{
+	font-size: 55px;
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-weight: 100;
+	letter-spacing: 2px;
+}
+.reservation .title p{
+	font-size: 22px;
+	color: #696969;
+	letter-spacing: 2px;
+}
+
+.reservation .form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	margin: 40px 5vw;
+	padding: 15vh 5vw;
+	flex-wrap: wrap;
+	box-shadow: 10px 3px 10px #696969;
+	border-radius: 5px;
+
+}
+
+input{
+	outline: none;
+}
+
+
+.reservation .form .items-box{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.reservation .form .items-box .input-box{
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+	margin: 20px 0;
+}
+
+.reservation .form .items-box .input-box .input input, .reservation .form .items-box .input-box  select{
+	width: 90%;
+	color:  #696969;
+	font-weight: 600;
+	border-radius: 4px;
+	padding: 8px 12px;
+	transition: all 0.4s ease;
+	border: 2px solid #696969;
+}
+
+.reservation .form .items-box .input-box .input{
+	position: relative;
+}
+
+.reservation .form .items-box .input-box .input i{
+	color: #696969;
+	position: absolute;
+	right: 15%;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: all 0.4s ease;
+}
+
+.reservation .form .items-box .input-box label{
+	font-weight: 900;
+	color: #696969;
+	cursor: pointer;
+}
+
+.reservation .form .items-box .input-box input:hover,
+.reservation .form .items-box .input-box input:focus {
+	border: 2px solid var(--orange);
+}
+.reservation .form .items-box .input-box select:hover {
+	border: 2px solid var(--orange);
+}
+.reservation .form .items-box .input-box input:hover +  i,
+.reservation .form .items-box .input-box input:focus +  i{
+	color: var(--orange);
+}
+
+
+.reservation .form button{
+	outline: none;
+	border: 2px solid var(--orange);
+	border-radius: 3px;
+	width: 260px;
+	height: 60px;
+	font-weight: 600;
+	font-size: 16px;
+	color: var(--orange);
+	letter-spacing: 2px;
+	background-color: transparent;
+	margin-top: 40px;
+	cursor: pointer;
+	transition: all 0.4s ease;
+}
+.reservation .form button:hover{
+	opacity: 1;
+	letter-spacing: 3px;
+	border-radius: 15px;
+}
+
+footer{
+	background-color: #121212;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+	align-items: baseline;
+	padding: 120px 60px;
+	flex-direction: row;
+}
+footer .col h2{
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+	font-weight: 100;
+	font-size: 23px;
+	padding-top: 40px ;
+	padding-bottom: 20px;
+	letter-spacing: 1px;
+}
+footer .col p {
+	color: #696969;
+	padding: 3px 0;
+}
+
+footer .col .row{
+	padding: 20px 0;
+}
+
+footer .col .row .icons a i{
+	color: white;
+	font-size: 20px;
+	margin: 0 10px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+footer .col .row .input {
+	position: relative;
+	z-index: 1;
+}
+
+footer .col .row .input input{
+	padding: 5px 10px;
+	width: 200px;
+	transition: all 0.3s ease;
+}
+footer .col .row .input label{
+	position: absolute;
+	z-index: 1;
+	right: 5%;
+	color: #696969;
+	font-size: 20px;
+	transition: all 0.3s ease;
+}
+footer .col .row .input input:focus,footer .col .row .input input:hover{
+	border-color: var(--orange);
+}
+footer .col .row .input input:focus+label,footer .col .row .input input:hover+label{
+	color: var(--orange);
+}
+footer .col .row .icons i:hover{
+	color: var(--orange);
+}
+
+footer .col .btn{
+	font-size: 22px;
+	text-align: center;
+	width: 180px ;
+	height: 50px;
+	line-height: 50px;
+	margin: 30px 0;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: transparent;
+	border: 2px solid var(--orange);
+	color: var(--orange);
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1010px){
+	.meal-items .meal-item{
+		width: 600px;
+	}
+	.meet-the-chefs .box-horizon{
+		flex-direction: column;
+	}
+
+	.meet-the-chefs .box-horizon .profile {
+		padding: 40px 0 ;
+	}
+
+	.about-us {
+		padding: 50px 0px;
+	}
+	.about-us .top-content h2{
+		font-size: 40px;
+	}
+	.about-us .body-content p{
+		font-size: 16px;
+	}
+	.welcome .content h1{
+		font-size: 45px;
+	}
+	.welcome .content .welcome-btn{
+		padding: 20px 40px;
+	}
+	.welcome .content .welcome-btn p{
+		font-size: 12px;
+	}
+	.foodIntro .intro h3{
+		font-size: 45px;
+	}
+	.foodIntro .intro p{
+		font-size: 16px;
+	}
+	.img-intro {
+		display: none;
+	}
+	.text-intro{
+		width: 50%;
+		height: auto;
+		margin: 10px 0;
+	}
+	.foodIntro .foodIntro-box .box-row{
+		flex-direction: column;
+	}
+	.menu{
+		width: 45%;
+	}
+	.our-services .services-container .service{
+		width: 70%;
+	}
+	.our-services .services-container{
+		flex-direction: column;
+	}
+}
+
+
+@media screen and (max-width: 600px){
+	.meal-menu .nav-meal .meal{
+		width: unset;
+	}
+	.meal-items .meal-item{
+		flex-direction: column;
+	}
+	.meal-items .meal-item .item-content{
+		padding: 30px;
+	}
+	.meal-items .meal-item h5{
+		font-size: 22px;
+	}
+	.reservation .form{
+		width: 90%;
+		flex-direction: column;
+	}
+	.reservation .form .items-box{
+		flex-direction: column;
+	}
+	.reservation .form .items-box{
+		width: 100%;
+		margin-left: 5%;
+	}
+	.reservation .form .items-box .input-box{
+		width: 80%;
+	}
+	.reviews .container{
+		padding-bottom: 100px;
+	}
+
+	.reviews .switch{
+		bottom: 10px;
+	}
+
+	footer{
+		flex-direction: column;
+	}
+	footer .col .row .input input{
+		width: 60vw;
+	}
+}
