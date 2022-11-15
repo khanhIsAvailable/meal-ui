@@ -8,7 +8,9 @@
 	font-family: 'Poppins', sans-serif;
 	box-sizing: border-box;
 }
-
+html{
+	overflow-x:hidden ;
+}
 
 body::-webkit-scrollbar{
 		display: none;
@@ -24,33 +26,10 @@ ul{
 a{
 	text-decoration: none;
 }
-.blur-layer{
-	position: fixed;
-	top: 0;
-	z-index: -99;
-	height: 100vh;
-	width: 100vw;
-	background-image: url("./images/bg.png");
-	background-attachment: fixed;
-	background-position:top center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	transition: all 0.3 ease;
-	overflow: hidden;
-}
-.blur-layer::before{
-	content: "";
-	background-color: rgba(0,0,0,0.2);
-	width: 100%;
-	height: 100%;
-	position: absolute;
-}
 .header{
 	position: relative;
 	top: 0;
 	min-height: 140px;
-	display: flex;
-	justify-content: center;
 	align-items: center;
 	width: 100vw;
 }
@@ -65,6 +44,32 @@ a{
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+}
+.wrapper{
+	position: relative;
+	width: 100vw;
+	overflow: hidden;
+}
+.wrapper .blur-layer{
+	position: fixed;
+	top: 0;
+	z-index: -99;
+	height: 100vh;
+	width: 100vw;
+	background-image: url("./images/bg.png");
+	background-attachment: fixed;
+	background-position:top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition: all 0.3 ease;
+	overflow: hidden;
+}
+.wrapper .blur-layer::before{
+	content: "";
+	background-color: rgba(0,0,0,0.2);
+	width: 100%;
+	height: 100%;
+	position: absolute;
 }
 .header .logo h1{
 	font-size: 20px;
@@ -1024,7 +1029,21 @@ footer .col .btn{
 }
 
 
-@media screen and (max-width: 1010px){
+@media screen and (max-width: 800px){
+	.reviews .layer .container .box{
+		width: 100vw;
+		height: 230px;
+	}
+	.reviews .container .box blockquote p{
+		font-size: 14px;
+	}
+	.reviews .layer{
+		width: 100vw;
+		left: 0;
+		transform: unset;
+	}
+
+
 	.meal-items .meal-item{
 		width: 600px;
 	}
@@ -1210,14 +1229,16 @@ footer .col .btn{
 	.reviews .title h2{
 		font-size: 40px;
 	}
-	.reviews .container .box{
-		left: 0;
-		display: flex;
-		padding: 0 10px;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
+	.reviews .layer .container .box{
+		width: 100vw;
+		padding: unset;
 	}
+	.reviews .layer{
+		left: 0;
+		transform: unset;
+		width: 100vw;
+	}
+
 	.reviews .container .box blockquote{
 		padding: 60px 10px 10px 10px;
 		width: 100vw;
@@ -1229,13 +1250,26 @@ footer .col .btn{
 	.layer{
 		width: 100vw;
 	}
-	.menu{
-		display: none;
-	}
 	.menuActive .menu{
-		position: fixed;
-		top:0;
-		right: 30vw;
+		right: 0;
 		height: 100vh;
+		width: 100vw;
+	}
+	.reservation .title h2{
+		font-size: 40px;
+	}
+	.reservation .title p{
+		font-size: 16px;
+	}
+}
+
+
+
+@media screen and (max-width: 300px){
+	.meal-items .meal-item{
+		width: 400px;
+	}
+	.reservation .form button{
+		width: 200px;
 	}
 }

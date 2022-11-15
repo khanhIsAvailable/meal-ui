@@ -260,25 +260,21 @@ const scrollLayer = () => {
 
 	window.addEventListener('scroll', () =>{
 		const y = window.pageYOffset
-		const x = window.pageXOffset
-		if(x>800){
-			if(y<800) blurLayer.style.transform = `scale(${1+(y/1000)})`
-			else blurLayer.style.transform = `scale(1.8)`
+		if(y<800) blurLayer.style.transform = `scale(${1+(y/1000)})`
+		else blurLayer.style.transform = `scale(1.8)`
 
-			if(y > lastScrollY && y >350 ){
-				layer.style.animation = "layerDown 0.5s forwards"
-			} 
-			else if(y < lastScrollY && y <= 350 ) {
-				layer.style.transition ="all 0.5s ease-out"
-				layer.style.animation = "layerUp 1s forwards"			
-			} else{
+		if(y > lastScrollY && y >350 ){
+			layer.style.animation = "layerDown 0.5s forwards"
+		} 
+		else if(y < lastScrollY && y <= 350 ) {
+			layer.style.transition ="all 0.5s ease-out"
+			layer.style.animation = "layerUp 1s forwards"			
+		} else{
 
-			}
-
-			lastScrollY = y
-			logo.classList.toggle('black-logo', y>350)
-			
 		}
+
+		lastScrollY = y
+		logo.classList.toggle('black-logo', y>350)
 	}
 
 	)
@@ -406,8 +402,8 @@ function renderSlide(){
 
 }
 
-function handleClickBtn(box, index){
-	box.style.left = - 680*index +'px'
+function handleClickBtn(box, index,length){
+	box.style.left = -length*index + "px"
 	const target = document.querySelector(`#radio-${index}`)
 	target.checked = true
 }
@@ -424,7 +420,7 @@ const renderSwitchBtn = () => {
 		interval = setInterval(function (){
 			if(index>=size-1) index=0 
 			else index ++
-			handleClickBtn(box,index)
+			handleClickBtn(box,index, box.childNodes[1].offsetWidth)
 		},3000)
 	}
 	
@@ -445,7 +441,7 @@ const renderSwitchBtn = () => {
 
 
 		label.addEventListener('click',()=>{
-			handleClickBtn(box,i)
+			handleClickBtn(box,i,box.childNodes[1].offsetWidth)
 			stop()
 			start(i)
 		})
@@ -454,7 +450,7 @@ const renderSwitchBtn = () => {
 		container.appendChild(label)
 	}
 
-	handleClickBtn(box,0)
+	handleClickBtn(box,0,box.childNodes[1].offsetWidth)
 	start(0)
 	
 }
